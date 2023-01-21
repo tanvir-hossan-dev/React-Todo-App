@@ -14,7 +14,12 @@ export const card = createSlice({
     deleteCard: (state, action) => {
       state.card = state.card.filter((item) => item._id !== action.payload);
     },
+    editCard: (state, action) => {
+      state.card = state.card.map((item) =>
+        item._id === action.payload._id ? { ...item, name: action.payload.name, sector: action.payload.sector } : item
+      );
+    },
   },
 });
 
-export const { addCard, deleteCard } = card.actions;
+export const { addCard, deleteCard, editCard } = card.actions;

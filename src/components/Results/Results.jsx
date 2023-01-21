@@ -43,9 +43,9 @@ const Results = () => {
                   <h2 className="card-title">Name: {item.name}</h2>
                   <p>Sector: {item.sector}</p>
                   <div className="m-0 p-0 flex justify-end">
-                    <p className="flex-grow-0 cursor-pointer">
+                    <Link to={`/edit/${item._id}`} className="flex-grow-0 cursor-pointer">
                       <AiTwotoneEdit />
-                    </p>
+                    </Link>
                     <p onClick={() => handleDelete(item._id)} className="flex-grow-0 ml-4 text-red-600 cursor-pointer">
                       <AiFillDelete />
                     </p>
