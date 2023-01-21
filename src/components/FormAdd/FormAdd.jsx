@@ -1,6 +1,9 @@
 import React from "react";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import uniqid from "uniqid";
+import { addCard } from "../../Redux/features/card/card";
 
 const FormAdd = () => {
   const [name, setName] = useState("");
@@ -12,6 +15,7 @@ const FormAdd = () => {
   const [agreeError, setAgreeError] = useState("");
 
   const [success, setSuccess] = useState("");
+  const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -36,7 +40,7 @@ const FormAdd = () => {
     }
     if (!agree) {
       setAgreeError("You need to agree the terms and conditions");
-      console.log(sector);
+
       if (name) {
         setNameEror("");
       }
@@ -56,6 +60,7 @@ const FormAdd = () => {
       setTimeout(() => {
         setSuccess("");
       }, 3000);
+      dispatch(addCard({ name, sector, agree, _id: uniqid() }));
     }
   };
 

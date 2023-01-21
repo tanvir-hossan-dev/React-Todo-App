@@ -9,10 +9,10 @@ export const card = createSlice({
   initialState,
   reducers: {
     addCard: (state, action) => {
-      state.card(action.payload);
+      state.card.push(action.payload);
     },
     deleteCard: (state, action) => {
-      state.card = state.card.filter((item) => item._id !== action._id);
+      state.card = state.card.filter((item) => item._id !== action.payload);
     },
   },
 });
